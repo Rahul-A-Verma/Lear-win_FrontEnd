@@ -10,7 +10,7 @@ import About from "./pages/about/About";
 import Account from "./pages/account/Account";
 import { UserData } from "./context/UserContext";
 import Loading from "./components/loading/Loading";
-import Courses from "./pages/courses/courses";
+import Courses from "./pages/courses/Courses";
 import CourseDescription from "./pages/courseDescription/CourseDescription";
 import PaymentSuccess from "./pages/paymentsuccess/PaymentSuccess";
 import Dashbord from "./pages/dashboard/Dashboard";
