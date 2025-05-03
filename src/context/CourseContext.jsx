@@ -29,18 +29,22 @@ export const CourseContextProvider = ({ children }) => {
   }
 
   async function fetchMyCourse() {
+    const token = localStorage.getItem("token");
+    if (!token) return; // no token means user not logged in
+  
     try {
       const { data } = await axios.get(`${server}/api/mycourse`, {
         headers: {
-          token: localStorage.getItem("token"),
+          token,
         },
       });
-
+  
       setMyCourse(data.courses);
     } catch (error) {
       console.log(error);
     }
   }
+  
 
   useEffect(() => {
     fetchCourses();

@@ -8,20 +8,20 @@ import {
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <div className="footer-content">
-        <p>
-          &copy; 2024 Your E-Learning Platform. All rights reserved. <br /> Made
-          with ❤️ <a href="">Rahul verma</a>
+        <p className="footer-text">
+          &copy; {new Date().getFullYear()} LearnNest. All rights reserved. <br />
+          Crafted with ❤️ by <a href="#">Rahul Verma</a>
         </p>
         <div className="social-links">
-          <a href="">
+          <a href="#" aria-label="Facebook">
             <AiFillFacebook />
           </a>
-          <a href="">
+          <a href="#" aria-label="Twitter">
             <AiFillTwitterSquare />
           </a>
-          <a href="">
+          <a href="#" aria-label="Instagram">
             <AiFillInstagram />
           </a>
         </div>

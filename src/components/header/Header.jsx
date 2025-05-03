@@ -1,45 +1,35 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
+
 const Header = ({ isAuth }) => {
-  const [isMenuOpen, setisMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setisMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
+
   return (
-    <header>
-      <div className="logo">Header</div>
-      <div className="menu-btb" onClick={toggleMenu}>
-        <div className="menu-icon"></div>
-        <div className="menu-icon"></div>
-        <div className="menu-icon"></div>
+    <header className="header">
+      <div className="logo">
+        <Link to="/">LearnNest</Link></div>
+
+      <div className={`hamburger ${isMenuOpen ? "open" : ""}`} onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <div className={isMenuOpen ? "link active" : "link"}>
-        <Link to={"/"} onClick={toggleMenu}>
-          {" "}
-          Home
-        </Link>
-        <Link to={"/about"} onClick={toggleMenu}>
-          {" "}
-          about
-        </Link>
-        <Link to={"/courses"} onClick={toggleMenu}>
-          {" "}
-          course
-        </Link>
+
+      <nav className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+        <Link to="/" onClick={toggleMenu}>Home</Link>
+        <Link to="/about" onClick={toggleMenu}>About</Link>
+        <Link to="/courses" onClick={toggleMenu}>Courses</Link>
         {isAuth ? (
-          <Link to={"/account"} onClick={toggleMenu}>
-            {" "}
-            account
-          </Link>
+          <Link to="/account" onClick={toggleMenu}>Account</Link>
         ) : (
-          <Link to={"/login"} onClick={toggleMenu}>
-            {" "}
-            login
-          </Link>
+          <Link to="/login" onClick={toggleMenu}>Login</Link>
         )}
-      </div>
+      </nav>
     </header>
   );
 };

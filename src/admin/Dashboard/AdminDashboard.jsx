@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../Utils/Layout";
@@ -6,13 +5,15 @@ import axios from "axios";
 import { server } from "../../main";
 import "./dashboard.css";
 
-const AdminDashbord = ({ user }) => {
+const AdminDashboard = ({ user }) => {
   const navigate = useNavigate();
 
+  // Redirect non-admin users
   if (user && user.role !== "admin") return navigate("/");
 
   const [stats, setStats] = useState([]);
 
+  // Fetch statistics for the admin dashboard
   async function fetchStats() {
     try {
       const { data } = await axios.get(`${server}/api/stats`, {
@@ -30,21 +31,26 @@ const AdminDashbord = ({ user }) => {
   useEffect(() => {
     fetchStats();
   }, []);
+
   return (
-    <div>
+    <div className="admin-dashboard">
       <Layout>
-        <div className="main-content">
-          <div className="box">
-            <p>Total Courses</p>
-            <p>{stats.totalCoures}</p>
+        <div className="dashboard-header">
+          <h2>Admin Dashboard</h2>
+          <p>Manage and monitor your platform's key metrics</p>
+        </div>
+        <div className="dashboard-content">
+          <div className="stats-box">
+            <p className="stat-title">Total Courses</p>
+            <p className="stat-value">{stats.totalCoures}</p>
           </div>
-          <div className="box">
-            <p>Total Lectures</p>
-            <p>{stats.totalLectures}</p>
+          <div className="stats-box">
+            <p className="stat-title">Total Lectures</p>
+            <p className="stat-value">{stats.totalLectures}</p>
           </div>
-          <div className="box">
-            <p>Total Users</p>
-            <p>{stats.totalUsers}</p>
+          <div className="stats-box">
+            <p className="stat-title">Total Users</p>
+            <p className="stat-value">{stats.totalUsers}</p>
           </div>
         </div>
       </Layout>
@@ -52,4 +58,4 @@ const AdminDashbord = ({ user }) => {
   );
 };
 
-export default AdminDashbord;
+export default AdminDashboard;

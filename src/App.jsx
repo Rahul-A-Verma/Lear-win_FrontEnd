@@ -19,13 +19,18 @@ import Lecture from "./pages/lecture/Lecture";
 import AdminDashboard from "./admin/Dashboard/AdminDashboard";
 import AdminCourses from "./admin/Courses/AdminCourses";
 import AdminUsers from "./admin/Users/AdminUsers";
+
+
 function App() {
   const { isAuth, user, loading } = UserData();
   return (
     <>
      {loading?<Loading/> : <BrowserRouter>
+
         <Header isAuth={isAuth} />
-        <Routes>
+
+      {/* Your existing Router and Pages */}
+      <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/courses" element={<Courses />}></Route>
@@ -75,6 +80,8 @@ function App() {
               element={isAuth ? <AdminUsers user={user} /> : <Login />}
               ></Route>
         </Routes>
+  
+    
         <Footer />
       </BrowserRouter>}
     </>

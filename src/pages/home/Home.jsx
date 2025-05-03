@@ -7,15 +7,17 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="home">
-        <div className="home-content">
-          <h1>Welcome to our E-learning Platform</h1>
-          <p>All the skills you need in one place</p>
-          <button onClick={() => navigate("/courses")} className="common-btn">
-            Get Started
-          </button>
+      <section className="home">
+        <div className="overlay">
+          <div className="home-content">
+            <h1>Unlock Your Potential with Us</h1>
+            <p>Master new skills and shape your future with our E-learning platform.</p>
+            <button onClick={() => navigate("/courses")} className="common-btn">
+              Explore Courses
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
       <Testimonials />
     </div>
   );
